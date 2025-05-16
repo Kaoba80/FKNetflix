@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Netflix Clon</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <style>
+    body {
+      margin: 0;
+      background-color: #000;
+      color: white;
+    }
+
+    .navbar-custom {
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent);
+      position: fixed;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    .nav-link {
+      color: white !important;
+      font-weight: 500;
+    }
+
+    .nav-link:hover {
+      color: #b3b3b3 !important;
+    }
+
+    .icon-img {
+      height: 32px;
+      border-radius: 4px;
+    }
+
+    .notification-badge {
+      background-color: red;
+      border-radius: 50%;
+      color: white;
+      font-size: 10px;
+      padding: 2px 6px;
+      position: absolute;
+      top: 5px;
+      right: 0;
+    }
+
+    .icon-wrapper {
+      position: relative;
+    }
+
+    .scrolling-wrapper::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .scrolling-wrapper::-webkit-scrollbar-thumb {
+      background: #000000;
+      border-radius: 4px;
+    }
+
+    .scrolling-wrapper::-webkit-scrollbar-thumb:hover {
+      background: #000000;
+    }
+
+    .miniatura {
+      position: relative;
+      cursor: pointer;
+    }
+
+    .miniatura-info {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 6px;
+      font-size: 0.8rem;
+      text-align: center;
+    }
+
+    .featured-banner::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 150px;
+      background: linear-gradient(to bottom, transparent, #000);
+      z-index: 2;
+    }
+
+    .featured-banner {
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      height: 100vh;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark navbar-custom px-4">
+  <a class="navbar-brand me-4" href="#"><img src="IMG/Logonetflix.png" alt="Netflix Logo" height="35"></a>
+  <div class="collapse navbar-collapse">
+    <ul class="navbar-nav me-auto">
+      <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+      <li class="nav-item"><a class="nav-link fw-bold" href="#">TV Shows</a></li>
+      <li class="nav-item"><a class="nav-link" href="#">Movies</a></li>
+      <li class="nav-item"><a class="nav-link" href="#">New & Popular</a></li>
+      <li class="nav-item"><a class="nav-link" href="#">My List</a></li>
+      <li class="nav-item"><a class="nav-link" href="#">Browse by Languages</a></li>
+    </ul>
+    <ul class="navbar-nav ms-auto">
+      <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-search"></i></a></li>
+      <li class="nav-item"><a class="nav-link" href="#">DVD</a></li>
+      <li class="nav-item icon-wrapper">
+        <a class="nav-link" href="#"><i class="bi bi-bell"></i></a>
+        <span class="notification-badge">10</span>
+      </li>
+      <li class="nav-item ms-2">
+        <a class="nav-link" href="#"><img class="icon-img" src="IMG/icon.png" alt="User"></a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Sección destacada -->
+<section class="featured-banner" style="background-image: url('IMG/Kimetsu.jpg');">
+  <!-- Degradado lateral y inferior -->
+  <div class="overlay" style="position: absolute; top: 0; left: 0; height: 100%; width: 100%;
+      background: linear-gradient(to right, rgba(0, 0, 0, 0.7) 40%, transparent); z-index: 1;"></div>
+  <div style="position: absolute; bottom: 0; left: 0; height: 200px; width: 100%;
+      background: linear-gradient(to top, #000 0%, transparent 100%); z-index: 2;"></div>
+
+  <!-- Contenido -->
+  <div class="container position-relative h-100 d-flex justify-content-start align-items-center" style="z-index: 3;">
+    <div class="text-white px-3 px-md-1 mt-1" style="max-width: 600px;">
+      <div class="d-flex align-items-center mb-3">
+        <h2 class="me-3 mb-0" style="font-size: 2.5rem; font-weight: bold;">Anime Shows</h2>
+        <select class="form-select form-select-sm bg-dark text-white border-white" style="width: auto;" aria-label="Géneros">
+          <option selected>Genres</option>
+          <option value="1">Action</option>
+          <option value="2">Fantasy</option>
+          <option value="3">Comedy</option>
+          <option value="4">Drama</option>
+        </select>
+      </div>
+      <h1 class="display-4 fw-bold">Kimetsu no Yaiba</h1>
+      <p class="lead">
+        Tanjiro Kamado lucha contra demonios mientras intenta salvar a su hermana Nezuko. Una historia épica de valentía, sangre y esperanza.
+      </p>
+      <div class="d-flex align-items-center gap-2 mb-2">
+        <button class="btn btn-light fw-bold"><i class="bi bi-play-fill"></i> Play</button>
+        <button class="btn btn-secondary text-white"><i class="bi bi-info-circle"></i> More Info</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Filas -->
+<div class="container-fluid text-white py-4" style="background-color: #000;">
+  <!-- Fila 1 -->
+  <h4 class="mb-2 ms-3">My List</h4>
+  <div class="scrolling-wrapper d-flex overflow-auto px-3 mb-4">
+    <div class="miniatura me-2" data-titulo="Cobra Kai" data-descripcion="Una serie de artes marciales cargada de nostalgia y acción." data-duracion="5 temporadas">
+      <img src="IMG/cobrakai.jpg" class="img-fluid rounded" style="width: 300px;">
+      <div class="miniatura-info">Cobra Kai</div>
+    </div>
+    <div class="miniatura me-2" data-titulo="Outlander" data-descripcion="Un romance épico que viaja en el tiempo entre guerras y pasiones." data-duracion="6 temporadas">
+      <img src="IMG/outlander.jpg" class="img-fluid rounded" style="width: 300px;">
+      <div class="miniatura-info">Outlander</div>
+    </div>
+    <div class="miniatura me-2" data-titulo="Kimetsu no Yaiba" data-descripcion="Tanjiro lucha contra demonios para salvar a su hermana Nezuko." data-duracion="4 temporadas">
+        <img src="IMG/Kimetsu.jpg" class="img-fluid rounded" style="width: 300px;">
+        <div class="miniatura-info">Kimetsu no Yaiba</div>
+      </div>
+      <div class="miniatura me-2" data-titulo="Attack on Titan" data-descripcion="La humanidad lucha contra titanes gigantes devoradores." data-duracion="4 temporadas">
+        <img src="IMG/attack.jpg" class="img-fluid rounded" style="width: 300px;">
+        <div class="miniatura-info">Attack on Titan</div>
+    </div>
+    <div class="miniatura me-2" data-titulo="The Crown" data-descripcion="Una mirada a la vida de la Reina Isabel II y su reinado." data-duracion="5 temporadas">
+        <img src="IMG/crown.jpg" class="img-fluid rounded" style="width: 300px;">
+        <div class="miniatura-info">The Crown</div>
+      </div>
+      <div class="miniatura me-2" data-titulo="Partner Track" data-descripcion="Ingrid Yun lucha por sus principios en un bufete de abogados." data-duracion="1 temporada">
+        <img src="IMG/partner.jpg" class="img-fluid rounded" style="width: 300px;">
+        <div class="miniatura-info">Partner Track</div>
+    </div>
+  </div>
+
+  <!-- Fila 2 -->
+  <h4 class="mb-2 ms-3">TV Dramas</h4>
+  <div class="scrolling-wrapper d-flex overflow-auto px-3 mb-4">
+    <div class="miniatura me-2" data-titulo="The Crown" data-descripcion="Una mirada a la vida de la Reina Isabel II y su reinado." data-duracion="5 temporadas">
+      <img src="IMG/crown.jpg" class="img-fluid rounded" style="width: 300px;">
+      <div class="miniatura-info">The Crown</div>
+    </div>
+    <div class="miniatura me-2" data-titulo="Partner Track" data-descripcion="Ingrid Yun lucha por sus principios en un bufete de abogados." data-duracion="1 temporada">
+      <img src="IMG/partner.jpg" class="img-fluid rounded" style="width: 300px;">
+      <div class="miniatura-info">Partner Track</div>
+    </div>
+    <div class="miniatura me-2" data-titulo="Cobra Kai" data-descripcion="Una serie de artes marciales cargada de nostalgia y acción." data-duracion="5 temporadas">
+        <img src="IMG/cobrakai.jpg" class="img-fluid rounded" style="width: 300px;">
+        <div class="miniatura-info">Cobra Kai</div>
+      </div>
+      <div class="miniatura me-2" data-titulo="Outlander" data-descripcion="Un romance épico que viaja en el tiempo entre guerras y pasiones." data-duracion="6 temporadas">
+        <img src="IMG/outlander.jpg" class="img-fluid rounded" style="width: 300px;">
+        <div class="miniatura-info">Outlander</div>
+    </div>
+    <div class="miniatura me-2" data-titulo="Kimetsu no Yaiba" data-descripcion="Tanjiro lucha contra demonios para salvar a su hermana Nezuko." data-duracion="4 temporadas">
+        <img src="IMG/Kimetsu.jpg" class="img-fluid rounded" style="width: 300px;">
+        <div class="miniatura-info">Kimetsu no Yaiba</div>
+      </div>
+      <div class="miniatura me-2" data-titulo="Attack on Titan" data-descripcion="La humanidad lucha contra titanes gigantes devoradores." data-duracion="4 temporadas">
+        <img src="IMG/attack.jpg" class="img-fluid rounded" style="width: 300px;">
+        <div class="miniatura-info">Attack on Titan</div>
+    </div>
+  </div>
+
+  <!-- Fila 3 -->
+  <h4 class="mb-2 ms-3">Shonen Stars</h4>
+  <div class="scrolling-wrapper d-flex overflow-auto px-3 mb-4">
+    <div class="miniatura me-2" data-titulo="Kimetsu no Yaiba" data-descripcion="Tanjiro lucha contra demonios para salvar a su hermana Nezuko." data-duracion="4 temporadas">
+      <img src="IMG/Kimetsu.jpg" class="img-fluid rounded" style="width: 300px;">
+      <div class="miniatura-info">Kimetsu no Yaiba</div>
+    </div>
+    <div class="miniatura me-2" data-titulo="Attack on Titan" data-descripcion="La humanidad lucha contra titanes gigantes devoradores." data-duracion="4 temporadas">
+      <img src="IMG/attack.jpg" class="img-fluid rounded" style="width: 300px;">
+      <div class="miniatura-info">Attack on Titan</div>
+    </div>
+    <div class="miniatura me-2" data-titulo="The Crown" data-descripcion="Una mirada a la vida de la Reina Isabel II y su reinado." data-duracion="5 temporadas">
+        <img src="IMG/crown.jpg" class="img-fluid rounded" style="width: 300px;">
+        <div class="miniatura-info">The Crown</div>
+      </div>
+      <div class="miniatura me-2" data-titulo="Partner Track" data-descripcion="Ingrid Yun lucha por sus principios en un bufete de abogados." data-duracion="1 temporada">
+        <img src="IMG/partner.jpg" class="img-fluid rounded" style="width: 300px;">
+        <div class="miniatura-info">Partner Track</div>
+    </div>
+    <div class="miniatura me-2" data-titulo="Cobra Kai" data-descripcion="Una serie de artes marciales cargada de nostalgia y acción." data-duracion="5 temporadas">
+        <img src="IMG/cobrakai.jpg" class="img-fluid rounded" style="width: 300px;">
+        <div class="miniatura-info">Cobra Kai</div>
+      </div>
+      <div class="miniatura me-2" data-titulo="Outlander" data-descripcion="Un romance épico que viaja en el tiempo entre guerras y pasiones." data-duracion="6 temporadas">
+        <img src="IMG/outlander.jpg" class="img-fluid rounded" style="width: 300px;">
+        <div class="miniatura-info">Outlander</div>
+    </div>
+  </div>
+</div>
+
+<!-- Script -->
+<script>
+  $(document).ready(function () {
+    $(".miniatura").on("click", function () {
+      var titulo = $(this).attr("data-titulo");
+      var descripcion = $(this).attr("data-descripcion");
+      var duracion = $(this).attr("data-duracion");
+      var imagen = $(this).find("img").attr("src");
+
+      $(".featured-banner h1").text(titulo);
+      $(".featured-banner p.lead").html(descripcion + "<br><strong>Duración:</strong> " + duracion);
+      $(".featured-banner").css("background-image", "url('" + imagen + "')");
+    });
+  });
+</script>
+
+</body>
+</html>
